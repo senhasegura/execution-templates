@@ -15,6 +15,7 @@ This repository holds senhasegura Execution templates. You will find different t
 - Use a concise and clear name
 - Save your template in the correct directory
 - Insert comments (#) in your template to help other users understand it
+- The doesn't nedd an extension
 
 Feel free to use and copy the structure from other folders.
 
