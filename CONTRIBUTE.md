@@ -12,11 +12,15 @@ This repository holds senhasegura Execution templates. You will find different t
 
 ## Develop
 
-Please create a new folder for your code and include a short README file that explains the template use case. Feel free to use and copy the structure from other folders.
+- Use a concise and clear name
+- Save your template in the correct directory
+- Insert comments (#) in your template to help other users understand it
+
+Feel free to use and copy the structure from other folders.
 
 ## Test
 
-Test your template and inform the version of the system it was tested. Please make sure to upload code that is tested and note in a README the minimum version required.
+Test your template and inform the version of the system it was tested, if applicable. Insert the supported versions as a comment in your template.
 
 ## Publish 
 
