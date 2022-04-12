@@ -1,0 +1,16 @@
+# Type: Change Password
+#
+# Brand: EMC
+# Model: EMC Unity V4
+# Date: 19/06/2016
+#
+# Reference: 
+#
+#  https://www.emc.com/collateral/TechnicalDocument/docu69330.pdf
+# 
+# Note:
+#
+#  Requires Unisphere CLI client. Not included.
+
+# Change password
+exec "uemcli -d [#IP#] -u Local/[#USERNAME#] -p [#CURRENT_PASSWORD#] /user/account -id [#USERNAME#] set [#NEW_PASSWORD#] -oldpasswd [#CURRENT_PASSWORD#]"
