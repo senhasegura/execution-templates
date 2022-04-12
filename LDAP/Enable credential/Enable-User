@@ -1,0 +1,12 @@
+# Version
+set-option LDAP_OPT_PROTOCOL_VERSION 3
+set-option LDAP_OPT_REFERRALS 3
+
+# Bind
+bind "CN=[#AUTH_USER#],CN=Users,DC=senhasegura,DC=mt4d"
+
+# Search user
+find "CN=Users,DC=senhasegura,DC=mt4d" (sAMAccountName=[#USERNAME#])
+
+# Update password
+mod-replace userAccountControl 512
