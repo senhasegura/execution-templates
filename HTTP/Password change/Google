@@ -1,0 +1,38 @@
+# Google password change
+start-at https://accounts.google.com/Login
+timeout 30000
+user-agent Mozilla/5.0  (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36
+
+new-action
+test-location /signin/v2/identifier
+log Filling username
+fill input#identifierId [#USERNAME#]
+jclick div#identifierNext
+
+new-action
+log Filling current password
+test-location /signin/v2/sl/pwd
+fill input[type=password] [#CURRENT_PASSWORD#]
+jclick #passwordNext
+
+new-action
+log Going to password change page
+test-location /?pli=1
+set-location /signinoptions/password
+
+new-action
+test-location /signin/v2/sl/pwd
+log Changing: Filling current password
+fill input[type=password] [#CURRENT_PASSWORD#]
+jclick div#passwordNext
+
+new-action
+log Changing: Filling new  password
+test-location /signinoptions/password
+fill "div[jsname=YPqjbf] input[type=password]" [#NEW_PASSWORD#]
+fill "div[jsname=Y3xtvc] input[type=password]" [#NEW_PASSWORD#]
+jclick "div[jsname=XTYNyb]"
+
+new-action
+log Password changed successfully
+test-location /secureaccount/welcome
