@@ -1,0 +1,39 @@
+# Type: Change Password
+#
+# Brand: Aruba
+# Model: ArubaOS 3+
+# Date: 19/06/2016
+#
+# Reference: 
+#  http://www.arubanetworks.com/techdocs/ArubaOS_64x_WebHelp/Web_Help_Index.htm#ArubaFrameStyles/1CommandList/mgmt-user.htm
+#
+
+
+# - Uncomment following lines if CLI session starts in user mode
+#
+#expect "*>"
+#exec "enable"
+#
+#expect "*:"
+#exec "[#CURRENT_PASSWORD#]"
+#-----------------------------------------------------------------
+
+expect "*#"
+exec "configure terminal"
+
+expect "*#"
+exec "mgmt-user [#USERNAME#] [#NEW_PASSWORD#]"
+
+expect "*#"
+exec "exit"
+
+expect "*#"
+exec "write memory"
+
+expect "*#"
+exec "exit"
+
+# - Uncomment following lines if CLI session start in user mode
+#expect "*>"
+#exec "exit"
+#-----------------------------------------------------------------
