@@ -1,0 +1,19 @@
+expect "*>"
+exec "system-view"
+
+expect "*]"
+exec "local-user [#USERNAME#]"
+
+expect "*]"
+exec "password cipher [#NEW_PASSWORD#]"
+
+expect "*]
+exec "quit"
+
+expect "*]
+exec "quit"
+
+expect "*]
+exec "quit"
+
+end
