@@ -1,0 +1,40 @@
+# Type: Change Password
+#
+# Brand: IBM
+# Model: AIX 7.1
+# Date: 19/06/2016
+#
+# Reference: 
+#
+#  http://www.ibm.com/support/knowledgecenter/ssw_aix_71/com.ibm.aix.howtos/HT_changing_pw.htm
+#  http://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.cmds4/passwd.htm
+#
+# Note: The passwd command uses only the first eight characters of your password for local and NIS 
+# passwords. Only 7-bit characters are supported in passwords. For this reason, National Language 
+# Support (NLS) code points are not allowed in passwords.
+#
+
+
+# 1. At the prompt, type the following:
+expect "*#"
+exec "passwd [#USERNAME#]"
+
+# 2. The following prompt displays:
+#   Changing password for UserID
+#   UserID's Old password:
+expect "*:"
+exec "[#CURRENT_PASSWORD#]"
+
+# 3. The following prompt is displayed:
+#   UserID's New password:
+expect "*:"
+exec "[#NEW_PASSWORD#]"
+
+# 4. The following prompt is displayed, asking you to re-type your new password.
+#   Enter the new password again:
+expect "*:"
+exec "[#NEW_PASSWORD#]"
+
+# Exit
+expect "*#"
+exec "exit"
