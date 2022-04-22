@@ -1,0 +1,23 @@
+# Type: Change Password
+#
+# Brand: Oracle
+# Model: Oracle Integrated Lights Out Manager 3.0 (ILOM)
+# Date: 20/06/2016
+#
+# Reference:
+#
+#  https://docs.oracle.com/cd/E19860-01/E21549/z400000c1393879.html
+#
+
+
+#
+expect "*>"
+exec "set /SP/users/[#USERNAME#] password=[#NEW_PASSWORD#]"
+
+
+#
+expect "*>"
+exec "exit"
+
+#
+end
