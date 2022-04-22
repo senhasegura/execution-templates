@@ -1,0 +1,34 @@
+# Type: Change Password
+#
+# Brand: DELL
+# Model: Integrated Dell Remote Access Controllers (iDRAC 4 to 8)
+# Date: 20/06/2016
+#
+# Reference: 
+#
+#  http://topics-cdn.dell.com/pdf/integrated-dell-remote-access-cntrllr-8-with-lifecycle-controller-v2.00.00.00_Reference%20Guide2_en-us.pdf
+#
+# Note:
+#  
+#  Password will be changed for the requested user ID, not username.
+#
+
+
+# Enter SSH console and open RACADM
+expect "*>"
+exec "racadm"
+
+# Change password parameter for the requested user id
+expect "*>>"
+exec "config -g cfgUserAdmin -o cfgUserAdminPassword -i [#ADD_INFO#] [#NEW_PASSWORD#]"
+
+# Exit RACADM
+expect "*Object value modified successfully"
+expect "*>>"
+exec "exit"
+
+# Close ssh session
+expect "*>"
+exec "exit"
+
+end
