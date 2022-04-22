@@ -1,0 +1,31 @@
+# Type: Change Password
+#
+# Brand: Apache
+# Model: Tomcat 7 and 8
+# Date: 21/06/2016
+#
+# Reference:
+#
+#  https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html
+#
+
+
+#
+expect "*#"
+exec "sed -i 's/<user username=\"[#USERNAME#]\" password=\"[#CURRENT_PASSWORD#]\"/<user username=\"[#USERNAME#]\" password=\"[#NEW_PASSWORD#]\"/' /etc/tomcat/tomcat-users.xml"
+
+# Validating the change
+expect "*#"
+exec "cat /etc/tomcat/tomcat-users.xml | grep 'username=\"[#USERNAME#]\" password'"
+expect "*[#NEW_PASSWORD#]*"
+
+#
+expect "*#"
+exec "service tomcat restart"
+
+#
+expect "*#"
+exec "exit"
+
+#
+end
