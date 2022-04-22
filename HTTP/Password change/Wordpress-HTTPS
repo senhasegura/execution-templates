@@ -1,0 +1,19 @@
+# Begin session
+get https://[#HOSTNAME#]/wp-login.php
+
+# Login
+select-button "wp-submit"
+fill-form log [#USERNAME#]
+fill-form pwd [#CURRENT_PASSWORD#]
+fill-form wp-submit "Login"
+fill-form redirect_to "https://[#HOSTNAME#]/wp-admin/profile.php"
+fill-form testcookie "1"
+submit
+
+expect "Repeat new password"
+
+# Exchange request
+select-button "submit"
+fill-form pass1 [#NEW_PASSWORD#]
+fill-form pass2 [#NEW_PASSWORD#]
+submit
