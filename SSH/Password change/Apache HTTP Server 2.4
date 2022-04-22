@@ -1,0 +1,22 @@
+# Type: Change Password
+#
+# Brand: Apache Foundation
+# Model: Apache HTTP Server 2.4
+# Date: 21/06/2016
+#
+# Reference: 
+#
+#  https://access.redhat.com/solutions/64158
+#
+
+
+#
+expect "*#"
+exec "htpasswd -bm /etc/htpasswd/.htpasswd [#USERNAME#] [#NEW_PASSWORD#]"
+
+#
+expect "*Updating"
+expect "*#"
+exec "exit"
+
+end
