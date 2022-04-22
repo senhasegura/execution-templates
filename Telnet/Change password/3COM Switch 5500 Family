@@ -1,0 +1,47 @@
+# Type: Change Password
+#
+# Brand: 3com
+# Model: Switch 5500 Family
+# Date: 19/06/2016
+#
+# Reference: 
+#
+#  http://h20565.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c02581967&lang=en-us&cc=us (pag 759)
+#
+# Waiting for username
+expect "*:"
+exec "[#USERNAME#]"
+
+# Waiting for password
+expect "*:"
+exec "[#CURRENT_PASSWORD#]"
+
+# Enter system-view
+expect "*>"
+exec "system-view"
+
+# Enter local user view
+expect "*]"
+exec "local-user [#USERNAME#]"
+
+# 
+expect "*]"
+exec "password cipher [#NEW_PASSWORD#]"
+ 
+# Exit to user. 
+expect "*]"
+exec "quit"
+
+# Exit to system view. 
+expect "*]"
+exec "quit"
+expect "*>"
+exec "quit"
+
+# Reboot
+#expect "*>"
+#exec "reboot"
+
+# 
+#expect "*]"
+#exec "y"
