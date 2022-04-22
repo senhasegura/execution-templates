@@ -1,0 +1,20 @@
+set-connect-timeout 1
+set-read-timeout 5
+
+# Define english as default language
+expect "*$"
+exec "export LC_ALL=C"
+
+# Execute passwd
+expect "*#"
+exec "userdel [#USERNAME#]"
+
+# Check results
+expect "*#"
+exec "id [#USERNAME#]"
+
+no-expect "*[#USERNAME#]"
+
+# Exit
+exec "exit"
+end
