@@ -1,0 +1,25 @@
+#to answer the terminal question
+expect "*]"
+exec ""
+
+# Enter config
+expect "*#"
+exec "clish"
+
+#Set password for admin user
+expect "*>"
+exec "set user [#USERNAME#] newpass [#NEW_PASSWORD#]"
+
+# save the new password
+expect "*>"
+exec "save config"
+
+# Exit clish
+expect "*>"
+exec "exit"
+
+# Exit the device
+expect "*#"
+exec "exit"
+
+end
