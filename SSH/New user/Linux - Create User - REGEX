@@ -1,0 +1,36 @@
+set-connect-timeout 1
+set-read-timeout 5
+set-ssh-version 2
+
+# Define english as default language
+expect-regex "/[$|#|>]/"
+exec "export LC_ALL=C"
+
+# Become sudo
+expect-regex "/[$|#|>]/"
+exec "sudo -k"
+
+expect-regex "/[$|#|>]/"
+exec "sudo /usr/sbin/useradd [#USERNAME#]  -m -d [#HOME#]  -g [#GRUPO_NOME#]  -u [#UID#] -c 'Nr. Service Desk [#CODIGO_GOVERNANCA#] - Operacao [#OPERACAO_COD#] - Usuario [#USERNAME#]' -s [#SHELL#]"
+ 
+
+# Change password
+expect-regex "/[$|#|>]/"
+exec "sudo passwd [#USERNAME#]"
+ 
+expect "New*password:"
+exec "[#NEW_PASSWORD#]"
+ 
+expect "*new*password:"
+exec "[#NEW_PASSWORD#]"
+ 
+
+# Validate if user exists
+expect-regex "/[$|#|>]/"
+exec "id [#USERNAME#]"
+expect "*uid*[#USERNAME#]"
+
+expect-regex "/[$|#|>]/"
+exec "exit"
+ 
+end
