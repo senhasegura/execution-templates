@@ -1,0 +1,21 @@
+#configure
+expect "*#"
+exec "configure terminal"
+
+#Replacement
+expect "*#"
+exec "username [#USERNAME#] password [#NEW_PASSWORD#] superuser"
+
+#exit config
+expect "*#"
+exec "exit"
+
+#save
+expect "*#"
+exec "write memory"
+
+#exit
+expect "*#"
+exec "exit"
+
+end
