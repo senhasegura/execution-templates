@@ -1,0 +1,35 @@
+wait(1)
+ascii()
+
+#Enter the TSO
+string(tso)
+enter
+wait(1)
+ascii()
+
+#Login
+string([#AUTH_USER#])
+enter
+wait(1)
+string([#COE_SENHA#])
+wait(1)
+enter
+wait(2)
+ascii()
+
+#Home screen
+enter
+wait(1)
+ascii()
+
+#command mode
+string(6)
+enter
+wait(1)
+ascii()
+
+#Change user password
+string (*ALTUSER [#USERNAME#] PASSWORD([#NEW_PASSWORD#]) NOEXPIRE*)
+enter
+wait(2)
+ascii()
