@@ -1,0 +1,28 @@
+# Type: Change Password
+#
+# Brand: OpenStack
+# Model: OpenStack Mitaka
+# Date: 22/06/2016
+#
+# Reference: 
+#
+#  http://docs.openstack.org/admin-guide/cli_manage_projects_users_and_roles.html
+#  http://docs.openstack.org/cli-reference/openstack.html
+#
+
+# Wait for the root prompt
+expect "*#"
+
+# sets the variables
+exec "source /opt/stack/devstack/openrc"
+expect "*#"
+
+# Uses openstack cli tool to change a user pass
+exec "openstack --os-username [#USERNAME#] --os-password [#CURRENT_PASSWORD#] user set --password [#NEW_PASSWORD#] [#USERNAME#]"
+# TODO Workaround for the error message (unable to use noexpect)
+expect "#"
+
+# Close session
+exec "exit"
+
+end
