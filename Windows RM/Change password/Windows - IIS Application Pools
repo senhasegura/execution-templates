@@ -1,0 +1,18 @@
+# Type: Change Password
+#
+# Brand: Microsoft
+# Model: IIS 8
+# Date: 21/06/2016
+#
+# Reference: 
+#
+# https://blogs.msdn.microsoft.com/mikezh/2012/04/23/iis-appcmd-quick-reference
+#
+
+# WINRM
+!change-password
+
+# WINPRC
+#net user [#USERNAME#] [#NEW_PASSWORD#]
+
+C:\Windows\System32\inetsrv\appcmd.exe set config /section:applicationPools /"[name='[#ADD_INFO#]']".processModel.identityType:SpecificUser /"[name='[#ADD_INFO#]']".processModel.userName:[#USERNAME#] /"[name='[#ADD_INFO#]']".processModel.password:[#NEW_PASSWORD#]
