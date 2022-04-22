@@ -1,0 +1,14 @@
+# Wait menu
+expect "Your choice :"
+exec "6"
+
+# Change password
+expect ">"
+exec "[#NEW_PASSWORD#]"
+
+expect ">"
+exec "[#NEW_PASSWORD#]"
+
+# Logout
+expect "Your choice :"
+exec "Q"
