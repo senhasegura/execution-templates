@@ -1,0 +1,8 @@
+# Change password
+net user [#USERNAME#] [#NEW_PASSWORD#]
+
+# Reload password
+!reload-password
+
+# Update password for "Defrag"
+schtasks /Change /RU [#USERNAME#] /RP [#NEW_PASSWORD#] /TN Defrag
