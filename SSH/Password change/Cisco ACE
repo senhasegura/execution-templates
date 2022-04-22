@@ -1,0 +1,21 @@
+# enter config
+expect "*#"
+exec "configure terminal"
+
+# change password
+expect "*#"
+exec "username [#USERNAME#] password 5 [#NEW_PASSWORD#] role Admin domain default-domain"
+
+# exit config
+expect "*#"
+exec "exit"
+
+#save
+expect "*#"
+exec "write memory"
+
+# exit the equipment
+expect "*#"
+exec "exit"
+
+end
