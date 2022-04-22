@@ -1,0 +1,23 @@
+# Type: Change Password
+#
+# Brand: Brocade
+# Model: Fabric OS v7.4.0
+# Date: 19/06/2016
+#
+# Reference: 
+#
+#  http://www.brocade.com/content/dam/common/documents/content-types/administration-guide/fos-740-adminguide.pdf
+#   
+
+
+#
+expect "*>"
+exec "passwd [#USERNAME#]"
+
+# 
+expect "*:"
+exec "[#NEW_PASSWORD#]"
+
+# Exit 
+expect "*>"
+exec "exit"
