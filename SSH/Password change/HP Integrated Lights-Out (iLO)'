@@ -1,0 +1,27 @@
+# Type: Change Password
+#
+# Brand: HP
+# Model: HP Integrated Lights-Out (2 to 4)
+# Date: 20/06/2016
+#
+# Reference:
+#
+#  http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=c03334058
+#  http://h20565.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c02774508
+#  http://h20565.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c03351064
+#
+
+
+#
+expect "*>"
+exec "set /map1/accounts1/[#USERNAME#] password=[#NEW_PASSWORD#]"
+
+#
+expect "*status=0"
+
+#
+expect "*>"
+exec "exit"
+
+#
+end
