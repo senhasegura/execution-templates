@@ -1,0 +1,20 @@
+# configure
+expect "*#"
+exec "configure terminal"
+
+expect "*#"
+exec "enable password [#NEW_PASSWORD#]"
+
+# exit config
+expect "*#"
+exec "exit"
+
+# save
+expect "*#"
+exec "write memory"
+
+# exit
+expect "*#"
+exec "exit"
+
+end
