@@ -1,0 +1,40 @@
+# Type: Change Password
+#
+# Brand: Checkpoint
+# Model: R77.30
+# Date: 12/06/2017
+#
+# Reference:
+#
+#  sk38977
+#
+ 
+#Change another user's password
+expect "*>"
+exec clish
+expect "*>"
+exec "lock database override"
+expect "*>"
+exec "set user [#USERNAME#] newpass [#NEW_PASSWORD#]"
+ 
+#Confirmation
+expect "*>"
+ 
+#Change the expert password with the same password as the admin
+exec "set expert-password"
+expect "*:"
+ 
+# Execute the current password
+exec "[#CURRENT_PASSWORD#]"
+expect "*:"
+ 
+#Insert new password
+exec "[#NEW_PASSWORD#]"
+expect "*:"
+ 
+#Confirm new password
+exec "[#NEW_PASSWORD#]"
+expect "*>"
+ 
+#exit
+exec "exit"
