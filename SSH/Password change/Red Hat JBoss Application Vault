@@ -1,0 +1,23 @@
+# Type: Change Password
+#
+# Brand: Red Hat
+# Model:  JBoss Application Vault (WildFly 10)
+# Date: 24/07/2016
+#
+# Reference: 
+#
+#  https://developer.jboss.org/wiki/MaskingPasswordsForWildFlyUsingNon-interactiveVaultTool
+# 
+
+
+#
+expect "*#"
+exec "/opt/wildfly/bin/vault.sh --enc-dir /opt/vault --keystore /opt/vault.keystore --keystore-password VaultK --salt $(shuf -i 10000000-99999999 -n 1) --iteration $(shuf -i 10-99 -n 1) --alias vault --vault-block [#ADD_INFO#] --attribute [#USERNAME#] --sec-attr [#NEW_PASSWORD#]"
+
+#
+expect "Please make note of the following:"
+expect "*#"
+exec "exit"
+
+#
+end
