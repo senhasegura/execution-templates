@@ -1,0 +1,20 @@
+# Type: Change Password
+#
+# Brand: Alcatel-Lucent
+# Model: OmniSwitch 6400, 6850, 6850E, 6855, 9000E
+# Date: 19/06/2016
+#
+# Reference: 
+#
+#  http://enterprise.alcatel-lucent.com/assets/documents/os_cli_revD.pdf
+#  https://service.esd.alcatel-lucent.com/portal/page/portal/EService/product_specific_support_media?p=OmniSwitch_6400
+
+
+
+#
+expect "*>"
+exec "user [#USERNAME#] password [#NEW_PASSWORD#]"
+
+#
+expect "*>"
+exec "exit"
