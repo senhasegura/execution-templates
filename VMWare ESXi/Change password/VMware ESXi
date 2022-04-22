@@ -1,0 +1,2 @@
+# Change Password
+system account set -i '[#USERNAME#]' -p '[#NEW_PASSWORD#]' -c '[#NEW_PASSWORD#]'
