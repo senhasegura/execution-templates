@@ -1,0 +1,5 @@
+# Change user password
+!change-password
+
+# Change password on com+
+powershell $comAdmin = New-Object -com ("COMAdmin.COMAdminCatalog.1")[nl]$applications = $comAdmin.GetCollection("Applications")[nl]$applications.Populate()[nl]foreach ($application in $applications)[nl]{[nl]$appName = $application.Value("Name")[nl]$appIdentity = $application.Value("Identity")[nl]if ($appIdentity -eq "[#ADD_INFO#]\[#USERNAME#]") {[nl]$application.Value("Password") = "[#NEW_PASSWORD#]"[nl]$comAdmin.ShutdownApplication($appName)[nl]$applications.SaveChanges()[nl]$comAdmin.StartApplication($appName)[nl]}[nl]}
