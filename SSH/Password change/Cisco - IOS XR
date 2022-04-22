@@ -1,0 +1,27 @@
+#configure
+expect "*#"
+exec "configure terminal"
+
+#replace
+expect "*#"
+exec "username [#USERNAME#]"
+expect "*#"
+exec "group root-system"
+expect "*#"
+exec "group cisco-support"
+expect "*#"
+exec "secret [#NEW_PASSWORD#]"
+
+#save
+expect "*#"
+exec "commit"
+exec "exit"
+
+#exit config
+expect "*#"
+exec "exit"
+expect "*#"
+exec "exit"
+
+
+end
