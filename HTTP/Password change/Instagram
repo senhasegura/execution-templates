@@ -1,0 +1,35 @@
+start-at https://www.instagram.com
+timeout 60000
+user-agent Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36 
+
+new-action
+set-location /accounts/login/?hl=pt-br
+
+new-action
+test-location /accounts/login/
+really-fill input[name=username] [#USERNAME#]
+
+new-action
+really-fill input[name=password] [#CURRENT_PASSWORD#]
+sleep 3000
+jclick button:contains("Log in")
+
+new-action
+test-selector a._soakw._vbtk2.coreSpriteDesktopNavProfile
+set-location /accounts/password/change/
+
+new-action
+test-location /accounts/password/change/
+really-fill input#cppOldPassword [#CURRENT_PASSWORD#]
+
+new-action
+really-fill input#cppNewPassword [#NEW_PASSWORD#]
+
+new-action
+really-fill input#cppConfirmPassword [#NEW_PASSWORD#]
+
+new-action
+jclick button:contains("Change Password")
+
+new-action
+test-selector p:contains("Password changed.")
