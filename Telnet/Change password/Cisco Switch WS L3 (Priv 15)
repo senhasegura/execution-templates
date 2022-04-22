@@ -1,0 +1,21 @@
+#configure
+expect "*#"
+exec "configure terminal"
+
+#Change user password
+expect "*#"
+exec "username [#USERNAME#] privilege 15 secret [#NEW_PASSWORD#]"
+
+# exit config
+expect "*#"
+exec "exit"
+
+#save
+expect "*#"
+exec "write memory"
+
+#exit
+expect "*#"
+exec "exit"
+
+end
