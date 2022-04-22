@@ -1,0 +1,24 @@
+# Enter conf
+expect "*>"
+exec "system-view"
+
+# Enter AAA modeA
+expect "*]"
+exec "aaa"
+
+# Change Password
+
+expect "*]"
+exec "local-user [#USERNAME#] password irreversible-cipher [#NEW_PASSWORD#]"
+
+# Exit AAA mode
+expect "*]"
+exec "quit"
+
+# Save from Conf and logout
+expect "*]"
+exec "commit"
+
+expect "*]"
+exec "quit"
+
