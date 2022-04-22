@@ -1,0 +1,25 @@
+start-at https://mobile.twitter.com/login
+timeout 15000
+user-agent Safari
+
+new-action
+test-location /login
+fill input[name="session[username_or_email]"] [#USERNAME#]
+fill input[name="session[password]"] [#CURRENT_PASSWORD#]
+jclick input[name=commit]
+sleep 3000
+
+new-action
+set-location https://mobile.twitter.com/settings/password
+sleep 3000
+
+new-action
+test-location https://mobile.twitter.com/settings/password
+
+fill input[name="settings[current_password]"] [#CURRENT_PASSWORD#]
+fill input[name="settings[password]"] [#NEW_PASSWORD#]
+fill input[name="settings[password_confirmation]"] [#NEW_PASSWORD#]
+jclick input[name=commit][type=submit]
+
+new-action
+test-location https://mobile.twitter.com/settings
