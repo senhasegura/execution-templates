@@ -1,0 +1,21 @@
+#configure
+expect "*>"
+exec "edit"
+
+#change
+expect "*#"
+exec "set system login user [#USERNAME#] authentication plain-text-password"
+expect ":"
+exec "[#NEW_PASSWORD#]"
+expect ":"
+exec "[#NEW_PASSWORD#]"
+
+#save
+expect "*#"
+exec "commit and-quit"
+
+#exit
+expect "*>"
+exec "exit"
+
+end
