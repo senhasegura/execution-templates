@@ -1,0 +1,22 @@
+# Type: Change Password
+#
+# Brand: Checkpoint
+# Model: R77.30
+# Date: 02/07/2016
+#
+# Reference: 
+#
+#  https://sc1.checkpoint.com/documents/R76/CP_R76_Gaia_WebAdmin/73101.htm
+# 
+# Note:
+#
+#  
+#
+
+expect "*>"
+exec "lock database override"
+exec "set selfpasswd oldpass [#CURRENT_PASSWORD#] passwd [#NEW_PASSWORD#]"
+
+# Current password
+expect "*>"
+exec "exit"
