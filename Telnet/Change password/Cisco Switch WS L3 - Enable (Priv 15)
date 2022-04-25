@@ -1,0 +1,34 @@
+# Enable
+expect "*>"
+exec "enable"
+
+# Password Vault
+expect "*:"
+exec "[#COE_SENHA#]"
+
+# configure
+expect "*#"
+exec "configure terminal"
+
+# Change user password
+# Use TAG [#ADD_INFO#] instead of 15 if you want a different privilege for each user
+expect "*#"
+exec "username [#USERNAME#] privilege 15 secret [#NEW_PASSWORD#]"
+
+# Change enable password
+expect "*#"
+exec "enable secret [#NEW_PASSWORD#]"
+
+# exit config
+expect "*#"
+exec "exit"
+
+# save
+expect "*#"
+exec "write memory"
+
+# exit
+expect "*#"
+exec "exit"
+
+end

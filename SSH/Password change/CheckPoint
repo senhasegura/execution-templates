@@ -1,0 +1,46 @@
+expect "*#"
+exec "passwd"
+
+#Current password
+expect "*:"
+exec "[#CURRENT_PASSWORD#]"
+
+#New Password
+expect "*:"
+exec "[#NEW_PASSWORD#]"
+
+#Repeat new password
+expect "*:"
+exec "[#NEW_PASSWORD#]"
+
+#Enter expert mode
+expect "*#"
+exec "expert"
+
+#Expert password
+expect "*:"
+exec "[#CURRENT_PASSWORD#]"
+
+#Change password in expert
+expect "*#"
+exec "passwd"
+
+#New Password
+expect "*:"
+exec "[#NEW_PASSWORD#]"
+
+#Repeat
+expect "*:"
+exec "[#NEW_PASSWORD#]"
+
+#mds password
+expect "*#"
+exec "mdscmd changeadministratorpassword [#USERNAME#] '[#NEW_PASSWORD#]'"
+
+#get out of the expert
+expect "*#"
+exec "exit"
+
+#exit
+expect "*#"
+exec "exit"

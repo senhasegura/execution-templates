@@ -1,0 +1,21 @@
+# Type: Change Password
+#
+# Brand: IBM
+# Model: DS8000 Series V7 R5
+# Date: 19/06/2016
+#
+# Reference: 
+#
+#  http://www-01.ibm.com/support/docview.wss?uid=ssg1S7002620&aid=1
+#
+# Note: Requires IBM DSCLI. Not included.
+#
+
+
+#
+expect "*>"
+exec "chuser -pw [#NEW_PASSWORD#] [#USERNAME#]"
+
+#
+expect "*>"
+exec "exit"

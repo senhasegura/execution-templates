@@ -1,0 +1,18 @@
+# login
+expect "*#"
+exec "conf t"
+
+# Change username and password and role
+expect "*(config)#"
+exec "username [#USERNAME#] password [#NEW_PASSWORD#] role network-admin"
+
+# Save
+expect "*(config)#"
+exec "copy running-config startup-config"
+
+# Logout
+expect "*#"
+exec "exit"
+
+expect "*#"
+exec "exit"

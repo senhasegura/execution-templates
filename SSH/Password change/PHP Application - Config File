@@ -1,0 +1,26 @@
+set-read-timeout 5
+
+# Set Language to English
+expect "*#"
+exec "export LC_ALL=C"
+
+# Start the Password Change Process
+expect "*#"
+
+# For files with aditional options
+#exec "sed -i -e 's/[#CURRENT_PASSWORD#]/[#NEW_PASSWORD#]/i' /var/www/html/app1/senhasegura/password_10038.dat"
+
+# For configuration files that only have the password as value
+exec "echo '[#NEW_PASSWORD#]' > /var/www/html/app1/senhasegura/password_10038.dat"
+
+# Execute the Password Change
+expect "*#"
+exec "cat /var/www/html/app1/senhasegura/password_10038.dat"
+
+# Validation
+expect "*[#NEW_PASSWORD#]"
+
+# Exit and end script
+expect "*#"
+exec "exit"
+end

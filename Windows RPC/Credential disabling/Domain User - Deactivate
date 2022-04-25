@@ -1,0 +1,2 @@
+# Inactivate the user
+net user [#USERNAME#] /active:no /domain

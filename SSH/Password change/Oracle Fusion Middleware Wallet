@@ -1,0 +1,34 @@
+# Type: Change Password
+#
+# Brand: Oracle
+# Model: WebLogic Server 12c
+# Date: 20/06/2016
+#
+# Reference: 
+#
+#  https://docs.oracle.com/cd/E28280_01/core.1111/e10105/walletmgr.htm
+#  
+#
+# Observation:
+#  
+#  User and server environment set up according to the Oracle guidelines
+#
+
+# Wait for the user prompt
+expect "*#"
+
+# Changing to US
+exec "LC_ALL=C"
+
+expect "*#"
+
+# Change password for a existing wallet
+exec "/u01/app/oracle/product/12.1.0/dbhome_2/bin/orapki wallet change_pwd -wallet /root/[#USERNAME#] -oldpwd '[#CURRENT_PASSWORD#]' -newpwd '[#NEW_PASSWORD#]'"
+
+# A PKI error can be found
+noexpect "PKI-[0-9]+"
+
+# Close session
+exec "exit"
+
+end

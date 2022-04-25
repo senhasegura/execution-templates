@@ -1,0 +1,23 @@
+# Type: Change Password
+#
+# Brand: Red Hat
+# Model: Red Hat JBoss Enterprise Application Platform
+# Date: 21/06/2016
+#
+# Reference:
+#
+#  https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/6/html-single/Administration_and_Configuration_Guide/index.html
+#
+
+
+#
+expect "*#"
+exec "/usr/local/EAP-7.0.0/bin/add-user.sh -u [#USERNAME#] -p [#NEW_PASSWORD#]"
+
+#
+expect "*updated"
+expect "*#"
+exec "exit"
+
+#
+end

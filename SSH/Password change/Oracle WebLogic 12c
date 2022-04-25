@@ -1,0 +1,44 @@
+# Type: Change Password
+#
+# Brand: Oracle
+# Model: WebLogic Server 12c
+# Date: 20/06/2016
+#
+# Reference: 
+#
+#  http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/06-WLST--4474/cmdline.htm
+#  
+#
+# Observation:
+#  
+#  User and server environment set up according to the Oracle guidelines
+#
+
+set-read-timeout 60
+
+# Wait for the user prompt
+expect "*#"
+
+# Open wlst (python console that can run weblogic functions)
+exec "/u01/app/oracle/Middleware/Oracle_Home/oracle_common/common/bin/wlst.sh"
+expect "*>"
+
+# Connects to the desired manager instance on the default (7001) port with admin rights
+exec "connect('[#USERNAME#]','[#CURRENT_PASSWORD#]', 't3://[#IP#]:7001')"
+expect "*Successfully connected*"
+
+# Creates a default authenticator
+expect "*>"
+exec "atnr=cmo.getSecurityConfiguration().getDefaultRealm().lookupAuthenticationProvider('DefaultAuthenticator')"
+noexpect "*Exception*"
+
+# Change password
+exec "atnr.changeUserPassword('[#USERNAME#]','[#CURRENT_PASSWORD#]','[#NEW_PASSWORD#]')"
+noexpect "*Exception*"
+
+# Close session
+exec "exit()"
+expect "#"
+exec "exit"
+
+end

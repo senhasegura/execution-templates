@@ -1,0 +1,14 @@
+# Enter configuration mode
+expect "*#"
+exec "conf t"
+
+# Change password
+expect "*#"
+exec "username [#USERNAME#] password [#NEW_PASSWORD#] role admin desc Administrator"
+
+# exit the team
+expect "*#"
+exec "exit"
+
+expect "*#"
+exec "exit"

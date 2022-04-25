@@ -1,0 +1,29 @@
+# Enter enable
+#expect "*>"
+#exec "enable"
+
+# enable password
+#expect "*:"
+#exec ""
+
+#configure
+expect "*#"
+exec "configure terminal"
+
+# change password
+expect "*#"
+exec "username [#USERNAME#] password [#NEW_PASSWORD#] privilege 15"
+
+# exit config
+expect "*#"
+exec "exit"
+
+#save
+expect "*#"
+exec "write memory"
+
+# exit the equipment
+expect "*#"
+exec "exit"
+
+end

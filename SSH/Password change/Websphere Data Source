@@ -1,0 +1,41 @@
+# Websphere Application Provider 8.5.5
+#
+# JDBC Data Source password change
+# @autor Andre Muramatsu <andre@mt4.com.br>
+# @since 25/01/2016
+
+# General settings
+# set-connect-timeout 60
+# set-read-timeout 30
+
+# Connecting to the admin console
+expect "*#"
+exec "/opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -conntype SOAP -user andre -password %#brasil123"
+
+expect "wsadmin>"
+exec "set ds [$AdminConfig getid /DataSource:[#ADD_INFO#]/]"
+no-expect "*Exception*"
+
+#expect "wsadmin>"
+exec "set ps [$AdminConfig showAttribute $ds propertySet]"
+no-expect "*Exception*"
+
+#expect "wsadmin>"
+exec "set rps [lindex [$AdminConfig showAttribute $ps resourceProperties] 0]"
+no-expect "*WASX7015E*"
+
+#expect "wsadmin>"
+exec "foreach rp $rps { if {[regexp \"^password\\\\(\" $rp] == 1} { puts $rp ; $AdminConfig modify $rp {{value [#NEW_PASSWORD#]}}; }}"
+no-expect "*Exception*"
+
+#expect "wsadmin>"
+exec "$AdminConfig save"
+no-expect "*Exception*"
+
+#expect "wsadmin>"
+exec "exit"
+
+# If there is any pending modification, it prevents the output with the error below
+no-expect "WASX7118I"
+
+exec "exit"

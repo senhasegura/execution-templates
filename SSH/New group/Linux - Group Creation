@@ -1,0 +1,25 @@
+# define connection variables
+set-connect-timeout 1
+set-read-timeout 5
+set-ssh-version 2
+
+# Define english as default language
+expect-regex "/[$|#|>]/"
+exec "export LC_ALL=C"
+
+# Become sudo 
+expect-regex "/[$|#|>]/"
+exec "/usr/local/bin/sudo -k"
+
+expect-regex "/[$|#|>]/"
+exec "/usr/local/bin/sudo /usr/sbin/groupadd [#GRUPO_NOME#]"
+
+# Check if group exists
+expect-regex "/[$|#|>]/"
+exec "getent group [#GRUPO_NOME#]"
+expect "*[#GRUPO_NOME#]*"
+
+expect-regex "/[$|#|>]/"
+exec "exit"
+ 
+end

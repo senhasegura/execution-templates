@@ -1,0 +1,39 @@
+# Type: Change Password
+#
+# Brand: VMWare
+# Model: VMWare ESXi 6.0
+# Date: 22/06/2016
+#
+# Reference: 
+#
+#  https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1004659
+#
+
+# Wait for the user prompt
+expect "*]"
+exec "esxcli system account set -i [#USERNAME#] -p [#NEW_PASSWORD#] -c [#NEW_PASSWORD#]"
+
+
+#set-connect-timeout 1
+#set-read-timeout 5
+#set-ssh-version 2
+
+# Wait for the user prompt
+#expect "*]"
+
+# Attempt to change the password
+#exec "passwd [#USERNAME#]"
+
+# Enter the new password
+#expect "*Enter new password:"
+#exec "[#NEW_PASSWORD#]"
+
+# Confirm the password
+#expect "*Re-type new password:"
+#exec "[#NEW_PASSWORD#]"
+
+# Verifies success and exits
+#expect "*password updated successfully*"
+#exec "exit"
+
+#end

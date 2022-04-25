@@ -1,0 +1,2 @@
+# Activate the user
+net user [#USERNAME#] /active:yes /domain

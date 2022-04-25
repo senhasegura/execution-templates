@@ -1,0 +1,18 @@
+# Clear Cache and log in
+expect "*$"
+exec "sudo -k"
+
+# Change password properties
+expect "*$"
+exec "sudo /opt/glassfish4/bin/asadmin set resources.jdbc-connection-pool.[#ADD_INFO#].property.Password=[#NEW_PASSWORD#]"
+
+# COE Password
+expect "*:"
+exec "[#COE_SENHA#]"
+
+# Check results
+expect "*successfully"
+
+# Exit
+expect "*$"
+exec "exit"

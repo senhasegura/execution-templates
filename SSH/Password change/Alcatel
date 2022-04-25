@@ -1,0 +1,11 @@
+# Change password
+expect "*#"
+exec "configure system security user [#USERNAME#] password [#NEW_PASSWORD#]"
+
+# Save password
+expect "*#"
+exec "admin save"
+
+# Leave the team
+expect "*#*
+exec "logout"

@@ -1,0 +1,19 @@
+expect "*#"
+exec "config global"
+
+expect "*#"
+exec "config system admin"
+
+expect "*#"
+exec "edit [#USERNAME#]"
+
+expect "*#"
+exec "set password [#NEW_PASSWORD#]"
+
+expect "*#"
+exec "end"
+
+expect "*#"
+exec "exit"
+
+end

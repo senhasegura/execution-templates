@@ -1,0 +1,32 @@
+# Type: Change Password
+#
+# Brand: Foundry
+# Model: ServerIron Switch
+# Date: 19/06/2016
+#
+# Reference: 
+#
+#  http://docplayer.net/7306717-Foundry-serveriron-switch-command-line-interface-reference.html
+#  https://www.techni-serve.com/serveriron.pdf
+#   
+
+
+#
+expect "*>"
+exec "enable"
+
+#
+expect "*#"
+exec "configure terminal"
+
+#
+expect "*#"
+exec "username [#USERNAME#] password [#NEW_PASSWORD#]"
+
+#
+expect "*#"
+exec "exit"
+
+#
+expect "*>"
+exec "exit"
