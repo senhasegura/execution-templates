@@ -27,7 +27,7 @@ Test your template and inform the version of the system it was tested, if applic
 
 1. [Fork the project](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
 1. [Clone your fork](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
-1. Create and test your template
+1. [Create and test your template](https://docs.senhasegura.io/docs/3.22/automated-operations/templates)
 1. [Commit your changes](https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository-using-the-command-line)
 1. [Push your local changes to the remote server](https://help.github.com/en/github/using-git/pushing-commits-to-a-remote-repository)
 1. [Create new Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork)
