@@ -1,4 +1,4 @@
-# Contribute <!-- omit in toc -->
+# Build with us <!-- omit in toc -->
 
 You can contribute with the senhasegura community publishing templates you have created.
 
