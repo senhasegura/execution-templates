@@ -8,7 +8,7 @@ Facing this, the senhasegura Execution module will centralize all operations.
 
 ## Execution Templates
 
-Templates are essential components of the senhasegura Execution module. They are the step-by-step instructions to perform system changes.
+Templates are essential components of the [senhasegura Execution module](https://docs.senhasegura.io/docs/3.22/automated-operations/overview). They are the step-by-step instructions to perform system changes such as password changes, enabling/disabling credentials, creating/deleting groups, and lots of automation.
 
 # Build with us
 
