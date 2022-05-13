@@ -1,0 +1,30 @@
+set-connect-timeout 1
+set-read-timeout 5
+
+# Set language to English
+expect "*#"
+exec "export LC_ALL=C"
+
+# Run passwd command in shell with sudo
+expect "*#"
+exec "passwd [#USERNAME#]"
+
+expect "*password:"
+exec "[#CURRENT_PASSWORD#]"
+
+# New Password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Repeat the new password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Confirm update
+#expect "*successfully"
+
+# Exit the device
+expect "*#"
+exec "exit"
+
+end
