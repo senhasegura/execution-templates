@@ -1,0 +1,33 @@
+set-connect-timeout 10
+set-read-timeout 10
+set-ssh-version 2
+
+# Set language to English
+expect-regex "/[#$>]/"
+exec "export LC_ALL=C"
+
+# Execute password
+expect-regex "/[#$>]/"
+exec "sudo passwd [#USERNAME#]"
+
+# New Password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Password confirmation
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Validate result
+expect "*updated successfully"
+
+expect-regex "/[#$>]/"
+exec "sudo chage -d 1 [#USERNAME#]"
+
+# Exit and end script
+expect-regex "/[#$>]/"
+exec "exit"
+end
+
+
+
