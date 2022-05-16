@@ -1,0 +1,10 @@
+expect-regex "/[$|#|>]/"
+exec "configure"
+#expect-regex "/.*config.*[$|#|>]/"
+expect "*config)#*"
+exec "username [#USERNAME#] password [#NEW_PASSWORD#]"
+expect "*config)#*
+#expect-regex "/[$|#|>]/"
+exec "exit"
+ 
+end
