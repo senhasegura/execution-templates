@@ -1,0 +1,11 @@
+set-connect-timeout 40
+set-read-timeout 40
+
+expect-regex "/[$|#|>]/"
+sleep 45
+
+expect-regex "/[$|#|>]/"
+exec "SET USER PASSWORD [#USERNAME#] [#NEW_PASSWORD#]"
+
+expect-regex "/[$|#|>]/"
+exec "exit"
