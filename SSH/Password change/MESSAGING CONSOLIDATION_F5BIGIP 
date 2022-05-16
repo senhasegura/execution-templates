@@ -1,0 +1,23 @@
+set-connect-timeout 30
+set-read-timeout 30
+set-ssh-version 2
+set-new-line-mode windows
+
+# Run modify password
+expect "*#"
+exec "modify auth password [#USERNAME#]"
+
+#New Password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Repeat the new password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Exit the device
+expect "*#"
+exec "quit"
+
+#exec "exit"
+end
