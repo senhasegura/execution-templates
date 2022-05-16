@@ -1,0 +1,31 @@
+# Set language to English
+expect "*>"
+exec "export LC_ALL=C"
+
+# clear sudo session
+expect "*>"
+exec "sudo -k"
+
+# Run passwd command in shell with sudo
+expect "*>"
+exec "sudo passwd [#USERNAME#]"
+
+#New Password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+#Enter the new password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+#Confirm update
+expect "*changed"
+
+# Exit the device
+expect "*>"
+exec "exit"
+
+end
+
+
+
