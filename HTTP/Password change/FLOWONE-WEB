@@ -1,0 +1,40 @@
+start-at http://[#IP#]:44080/sas5
+user-agent Mozilla/5.0 (X11 Chrome/54.0.2840.71 Safari/537.36 	
+timeout 30000
+
+new-action
+log FILLING LOGIN
+fill input[name="username"] [#USERNAME#]
+fill input[name="password"] [#CURRENT_PASSWORD#]
+click button[name="btnauthenticate"]
+sleep 3
+
+
+new-action
+test-location /sas5/Frames.jsp
+log LOGGED
+
+new-action
+set-location /sas5/ui_user_servlet/showPassword
+sleep 3
+log ACCESSING EXCHANGE PAYMENT
+
+new-action
+log FILLED
+fill input[name="txtOldPassword"] [#CURRENT_PASSWORD#]
+fill input[name="txtPassword"] [#NEW_PASSWORD#]
+fill input[name="txtConfirmPassword"] [#NEW_PASSWORD#]
+click button[name="btnupdatePassword"]
+
+new-action
+log FILLED
+sleep 3
+
+new-action
+test-selector .info
+log PASSWORD CHANGED
+
+sleep 3
+
+
+
