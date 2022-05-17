@@ -1,0 +1,30 @@
+set-connect-timeout 5
+set-read-timeout 5
+set-ssh-version 2
+
+#START
+
+expect "*$"
+
+exec "passwd"
+
+expect "*password:"
+
+#ENTER THE CURRENT PASSWORD
+exec "[#CURRENT_PASSWORD#]"
+
+expect "New password:"
+
+#NEW PASSWORD
+exec "[#NEW_PASSWORD#]"
+
+expect "*password:"
+
+#NEW PASSWORD
+exec "[#NEW_PASSWORD#]"
+
+expect "*successfully"
+
+#END
+
+

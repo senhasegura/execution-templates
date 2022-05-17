@@ -1,0 +1,60 @@
+set-connect-timeout 10
+set-read-timeout 10
+set-ssh-version 2
+
+expect-regex "/[#$>]/"
+exec "shell.set --enabled True"
+
+expect-regex "/[#$>]/"
+exec "shell"
+
+#expect-regex "/[#$>]/"
+#exec "file change.ldif"
+
+#expect-regex "/[#$>]/"
+#expect "*(No such file or directory)*"
+
+expect-regex "/[#$>]/"
+exec "./senhasegura.sh"
+
+expect "*Dispositivo:*"
+exec "[#IP#]"
+
+expect "*Usuario de autenticacao:*"
+exec "[#AUTH_USER#]"
+
+expect "*Senha de autenticacao:*"
+exec "[#COE_SENHA#]"
+
+expect "*Username:*"
+exec "[#USERNAME#]"
+
+expect "*Password:*"
+exec "[#NEW_PASSWORD#]"
+
+expect "*modifying entry*"
+
+#CHANGING FOR LINUX
+exec "passwd"
+
+expect "*Old Password*"
+exec "[#CURRENT_PASSWORD#]"
+
+expect "*New Password*"
+exec "[#NEW_PASSWORD#]"
+
+expect "*new Password*"
+exec "[#NEW_PASSWORD#]"
+
+expect "*Password changed*"
+
+exec "rm change.ldif"
+
+expect-regex "/[#$>]/"
+
+end
+
+
+
+
+

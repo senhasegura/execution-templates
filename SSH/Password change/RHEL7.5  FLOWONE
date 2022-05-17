@@ -1,0 +1,34 @@
+set-connect-timeout 1
+set-read-timeout 5
+set-ssh-version 2
+
+# Set language to English
+expect "*$"
+exec "export LC_ALL=C"
+
+expect "*$"
+exec "sudo -k"
+
+# Run passwd command in shell with sudo
+expect "*$"
+exec "sudo passwd [#USERNAME#]"
+
+#expect "*[#AUTH_USER#]"
+#exec "[#AUTH_PASSWORD#]"
+
+# New Password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Repeat the new password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Confirm update
+expect "*successfully."
+
+# Exit the device
+expect "*$"
+exec "exit"
+
+end

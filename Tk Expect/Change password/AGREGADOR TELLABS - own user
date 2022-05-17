@@ -1,0 +1,25 @@
+# Vendor: Coriant
+# Product: Agregador Tellabs
+# Executor:Tk Expect
+
+use telnet script
+expect "*name:*"
+send -- "[#USERNAME#]\r"
+
+expect "*password:*"
+send -- "[#CURRENT_PASSWORD#]\r"
+
+expect "*>"
+send -- "enable\r"
+
+expect "*#"
+send -- "password\r"
+
+expect "*type password:"
+send -- "[#NEW_PASSWORD#]\r"
+
+expect "*retype password:"
+send -- "[#NEW_PASSWORD#]\r"
+
+expect "*#"
+send -- "quit\r"

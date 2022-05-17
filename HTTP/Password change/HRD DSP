@@ -1,0 +1,73 @@
+start-at http://[#IP#]:8080/hpdsp_gui/Index.jsp
+	
+timeout 50000
+
+new-action
+
+log "STARTING LOGIN"
+
+fill input[name="userId"] [#USERNAME#]
+
+fill input[name="password"] [#CURRENT_PASSWORD#]
+
+#click input[type="submit"]
+
+jscript $('input[type="submit"]').click()
+
+log "LOGIN DONE"
+
+new-action
+
+test-location http://[#IP#]:8080/hpdsp_gui/welcome.do
+
+sleep 5
+
+new-action
+
+log "CHANGE URL FOR PASSWORD CHANGE"
+
+set-location http://[#IP#]:8080/hpdsp_gui/userMgmt.do?method=getUpdateUserPasswordPage
+
+test-location http://[#IP#]:8080/hpdsp_gui/userMgmt.do?method=getUpdateUserPasswordPage
+
+log "IT IS IN THE CORRECT URL"
+
+new-action
+
+log "FILLING IN THE PASSWORD FIELDS"
+
+fill input[name="currentPassword"] [#CURRENT_PASSWORD#]
+
+fill input[name="password"] [#NEW_PASSWORD#]
+
+fill input[name="confirmPassword"] [#NEW_PASSWORD#]
+
+click button[name="buttonName"]
+
+new-action
+
+sleep 3
+
+new-action
+
+test-location http://[#IP#]:8080/hpdsp_gui/login.do?method=logout
+
+new-action
+
+log "STARTING VALIDATION LOGIN"
+
+fill input[name="userId"] [#USERNAME#]
+
+fill input[name="password"] [#NEW_PASSWORD#]
+
+jscript $('input[type="submit"]').click()
+
+log "LOGIN DONE"
+
+sleep 3
+
+new-action
+
+test-location http://[#IP#]:8080/hpdsp_gui/welcome.do
+
+sleep 5

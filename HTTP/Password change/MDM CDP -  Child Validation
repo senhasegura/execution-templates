@@ -1,0 +1,7 @@
+start-at http://[#IP#]/ui/
+timeout 15000
+user-agent Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+
+
+new-action
+set-location /#/login

@@ -1,0 +1,18 @@
+# Vendor: Ericsson
+# Product: BSC Ericsson
+# Executor: SSH
+
+set-new-line-mode windows
+
+# add name
+expect "*>"
+exec "net user [#USERNAME#] [#NEW_PASSWORD#]"
+
+expect "*>"
+exec "net user [#USERNAME#]"
+expect "*completed successfully."
+
+# ends
+expect "*>"
+exec "exit"
+end

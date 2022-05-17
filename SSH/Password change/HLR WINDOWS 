@@ -1,0 +1,12 @@
+set-new-line-mode windows
+
+expect "*>"
+exec "net user [#USERNAME#]"
+expect "*completed successfully."
+
+exec "net user [#USERNAME#] [#NEW_PASSWORD#]"
+expect "*completed successfully."
+
+expect "*>"
+exec "exit"
+end

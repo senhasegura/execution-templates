@@ -1,0 +1,34 @@
+start-at http://[#IP#]:8080/WEBP
+
+timeout 60000
+
+new-action
+sleep 3000
+fill input[name="duser.use_login_name"] [#USERNAME#]
+fill input[name="duser.use_password"] [#CURRENT_PASSWORD#]
+sleep 2000
+jscript $('.arrow-combo').click()
+sleep 2000
+jscript $('[name="duser.use_org_organization_id"]').val("MCOM")
+sleep 2000
+click button[type="submit"]
+
+
+test-location /login.init.logic
+new-action
+click #link_chgpass
+
+new-action
+sleep 2000
+fill input[name="duser.use_password"] [#CURRENT_PASSWORD#]
+fill input[name="use_password_new"] [#NEW_PASSWORD#]
+fill input[name="use_password_confirmation"] [#NEW_PASSWORD#]
+#jscript document.queySelector('#btn_chgpass').click()
+click #btn_chgpass
+
+new-action
+sleep 4000
+#test-selector div[class="title"]
+test-selector div:contains("Sucesso"):eq(1)
+
+sleep 3000

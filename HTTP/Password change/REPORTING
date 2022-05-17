@@ -1,0 +1,47 @@
+timeout 600000
+
+start-at https://[#IP#]:8443/reporting/
+
+new-action
+
+fill #username [#USERNAME#]
+
+new-action
+
+fill #password [#CURRENT_PASSWORD#]
+
+new-action
+
+click #submit
+
+new-action
+
+click #mySettingsId
+
+new-action
+
+test-location /reporting/mySettings.ams?source=mySettings
+
+new-action
+
+fill #currentPass [#CURRENT_PASSWORD#]
+
+new-action
+
+fill #userPass [#NEW_PASSWORD#]
+
+new-action
+
+fill #confirmPass [#NEW_PASSWORD#]
+
+new-action
+
+click [type=submit]
+
+new-action
+
+test-location /reporting/updateMySettings.ams
+
+new-action
+
+test-selector div[class="alert alert-success"]

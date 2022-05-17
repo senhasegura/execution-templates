@@ -1,0 +1,31 @@
+set-connect-timeout 10
+set-read-timeout 10
+set-ssh-version 2
+
+# Set language to English
+expect "*$ "
+exec "export LC_ALL=C"
+ 
+# Raise the level to root
+expect "*$ "
+exec "sudo -i"
+ 
+# Execute password change command
+expect "*# "
+exec "/usr/local/bin/chgpwd.sh [#USERNAME#] remote"
+ 
+expect "Enter old password and then press [ENTER]: "
+exec "[#CURRENT_PASSWORD#]"
+ 
+expect "Enter your new password and then press [ENTER]: "
+exec "[#NEW_PASSWORD#]"
+ 
+expect "Retype your new password again and then press [ENTER]: "
+exec "[#NEW_PASSWORD#]"
+
+set-read-timeout 100
+
+#check returned value and take action exit 0 or 1
+expect "*# " 
+exec "echo \$?"
+expect "0"  

@@ -1,0 +1,34 @@
+# elevate privilege
+expect "*#"
+exec "scope security"
+
+# find user to change
+expect "*security #"
+exec "scope local-user [#USERNAME#]"
+
+# initiate password change
+expect "*local-user #"
+exec "set password"
+
+# enter new password and then confirm
+expect "*nter a password:"
+exec "[#NEW_PASSWORD#]"
+expect "*onfirm the password:"
+exec "[#NEW_PASSWORD#]"
+
+no-expect "*Invalid value"
+
+# save the change
+#expect "*local-user* #"
+exec "commit-buffer"
+
+# return privilege level and exit server
+expect "*local-user #"
+exec "top"
+expect "*#"
+exec "exit"
+ 
+end
+
+
+

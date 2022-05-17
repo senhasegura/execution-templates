@@ -1,0 +1,26 @@
+set-connect-timeout 1
+set-read-timeout 5
+
+# Set language to English
+expect-regex "/[$|#|>]/"
+exec "export LC_ALL=C"
+
+#Set the new user password
+expect "*]$"
+exec "sudo /usr/bin/passwd [#USERNAME#]"
+
+#Enter the new password
+expect "New password: "
+exec "[#NEW_PASSWORD#]"
+
+
+
+expect "Retype new password: "
+exec "[#NEW_PASSWORD#]"
+
+expect "*updated successfully."
+
+
+#logof
+expect "*]$"
+exec "exit"

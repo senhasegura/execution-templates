@@ -1,0 +1,16 @@
+set-connect-timeout 10
+set-read-timeout 10
+
+expect "*Command>*"
+
+exec "localaccounts.user.password.update --username [#USERNAME#] --password"
+
+expect "*Enter password:*"
+
+exec "[#NEW_PASSWORD#]"
+
+expect "*Reenter password:*"
+
+exec "[#NEW_PASSWORD#]"
+
+expect "*Command>*"

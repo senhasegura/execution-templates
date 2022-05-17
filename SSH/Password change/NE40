@@ -1,0 +1,30 @@
+set-ssh-version 2
+set-new-line-mode "unix"
+set-connect-timeout 20
+set-read-timeout 20
+
+expect "*>"
+exec "system-view"
+
+expect "*]"
+exec "aaa"
+
+expect "*aaa]"
+exec "local-user [#USERNAME#] password irreversible-cipher [#NEW_PASSWORD#]"
+
+expect "*aaa]"
+exec "quit"
+
+expect "*]"
+exec "quit"
+
+expect "*>"
+exec "save"
+
+expect "*Are you sure to continue?*"
+exec "Y"
+
+expect "*Save the configuration successfully.*"
+exec ""
+
+end

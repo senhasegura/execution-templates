@@ -1,0 +1,38 @@
+start-at https://[#IP#]:83/login.html
+timeout 10000
+user-agent Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+
+new-action
+test-location /login.html
+log filling in username
+#fill #txtUsername [#USERNAME#]
+fill input[id="txtUsername"] [#USERNAME#]
+
+new-action
+log filling the password
+fill #txtPassword [#CURRENT_PASSWORD#]
+
+new-action
+log by clicking the button
+click #submit
+
+new-action
+set-location /platform/frmwork/view/index.html
+log opening password change screen
+click #changepassword
+
+new-action
+log filling old password
+fill #oldPasswordText
+
+new-action
+log filling new password
+fill #newPasswordText
+
+new-action
+log confirming new password
+fill #confirmPasswordText
+
+new-action
+log by clicking the save button
+click #mmlSettingBtn

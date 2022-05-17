@@ -1,0 +1,35 @@
+set-connect-timeout 1
+set-read-timeout 5
+set-ssh-version 2
+
+# Set English language
+expect "*$"
+exec "export LC_ALL=C"
+
+# clear sudo session
+expect "*$"
+exec "sudo -k"
+
+# Run passwd command in shell with sudo
+expect "*$"
+exec "sudo passwd [#USERNAME#]"
+
+#New Password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+# Repeat the new password
+expect "*password:"
+exec "[#NEW_PASSWORD#]"
+
+#Confirm update
+expect "*successfully"
+
+expect "*$"
+exec "sudo chage -d 1 [#USERNAME#]"
+
+# Exit the device
+expect "*$"
+exec "exit"
+
+end

@@ -1,0 +1,47 @@
+user-agent Mozilla/5.0 (X11 Chrome/54.0.2840.71 Safari/537.36
+
+start-at https://[#IP#]:8553/monitor/index.php/auth/login
+
+timeout 10000
+
+new-action
+log STARTING LOGIN
+fill input[id="username"] [#USERNAME#]
+fill input[id="password"] [#CURRENT_PASSWORD#]
+click input[type="submit"]
+
+#new-action
+#log TESTING LOGIN
+#test-location https://[#IP#]:8553/monitor/index.php/tac/index/3
+#log LOGGED
+
+new-action
+sleep 3
+log CHANGING SCREEN TO PASSWORD CHANGE FORM
+set-location https://[#IP#]:8553/monitor/index.php/change_password
+
+new-action
+sleep 3
+log TESTING URL CHANGE
+test-location https://[#IP#]:8553/monitor/index.php/change_password
+log ESTAMOS PAG DE TROCA DE SENHA
+
+new-action
+log FILL OUT PASSWORD CHANGE FORM
+fill input[id="current_password"] [#CURRENT_PASSWORD#]
+fill input[id="new_password"] [#NEW_PASSWORD#]
+fill input[id="confirm_password"] [#NEW_PASSWORD#]
+log CLICANDO NO BOTÃO
+click input[id="change_password"]
+
+new-action
+sleep 3
+log TESTING SUCCESS
+jscript $('div:contains("Password changed successfully")')
+log SUCCESS!
+sleep 3
+
+
+
+
+
