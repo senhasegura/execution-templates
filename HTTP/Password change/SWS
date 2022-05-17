@@ -1,0 +1,35 @@
+user-agent Mozilla/5.0 (X11 Chrome/54.0.2840.71 Safari/537.36
+
+start-at https://[#IP#]:8553/SWS/index.php
+
+timeout 10000
+
+new-action
+log STARTING LOGIN
+fill input[name="username"] [#USERNAME#]
+fill input[name="password"] [#CURRENT_PASSWORD#]
+click input[type="submit"]
+
+new-action
+sleep 3
+log GOING TO CHANGE PASSWORD
+jscript $('a:contains("Settings")').click()
+
+new-action
+log FILL OUT PASSWORD CHANGE FORM
+fill input[name="password"] [#CURRENT_PASSWORD#]
+fill input[name="password_new"] [#NEW_PASSWORD#]
+fill input[name="password_confirm"] [#NEW_PASSWORD#]
+log CLICKING ON THE BUTTON
+click input[name="userupdatepassword"]
+
+new-action
+sleep 3
+log TESTING SUCCESS
+jscript $('div:contains("User password updated successfully")')
+log SUCCESS!
+sleep 3
+
+
+
+
