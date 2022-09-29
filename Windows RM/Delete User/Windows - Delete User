@@ -1,0 +1,5 @@
+# Remove "!unsecure" if you are using SSL
+!unsecure
+
+# Delete user
+net user [#USERNAME#] /delete
