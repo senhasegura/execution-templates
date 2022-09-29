@@ -1,0 +1,8 @@
+# Remove "!unsecure" if you are using SSL
+!unsecure
+
+# Create user
+net user /add [#USERNAME#] [#NEW_PASSWORD#]
+
+# Add user to the administrators group. You can change the group name
+net localgroup administrators [#USERNAME#] /add
