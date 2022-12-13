@@ -2,17 +2,17 @@
 
 ## Executions module
 
-Many senhasegura features need to perform asynchronous tasks on devices. They run with standard protocols or interfaces that senhasegura can, over its plugins, easily manage.
+senhasegura needs to perform asynchronous tasks on devices and third-parties solutions. They run with standard protocols or interfaces that senhasegura can, over its plugins, easily manage. The senhasegura Execution module will centralize all operations.
 
-Facing this, the senhasegura Execution module will centralize all operations.
+Know more on [senhasegura Execution module](https://docs.senhasegura.io/docs/executions-introduction) documentation.
 
 ## Execution Templates
 
-Templates are essential components of the [senhasegura Execution module](https://docs.senhasegura.io/docs/3.22/automated-operations/overview). They are the step-by-step instructions to perform system changes such as password changes, enabling/disabling credentials, creating/deleting groups, and lots of automation.
+Templates are essential components of the senhasegura Execution module. They are the step-by-step instructions to achieve the operations such as password changes, enabling/disabling credentials, creating/deleting groups, system changes, DevOps operations, and more.
 
 # Build with us
 
-See how to [`CONTRIBUTE`](CONTRIBUTE.md) creating and publishing templates.
+See how to [`create and share senhasegura templates`](CONTRIBUTE.md). 
 
 # License
 
